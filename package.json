@@ -1,0 +1,29 @@
+{
+	"name": "slashframe-djs",
+	"version": "0.0.1-alpha",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Shwibi/slashframe-djs.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Shwibi/slashframe-djs/issues"
+	},
+	"homepage": "https://github.com/Shwibi/slashframe-djs#readme",
+	"dependencies": {
+		"@discordjs/builders": "^0.6.0",
+		"@discordjs/rest": "^0.1.0-canary.0",
+		"discord-api-types": "^0.22.0",
+		"discord.js": "^13.1.0",
+		"dotenv": "^10.0.0",
+		"shwi-js": "^1.1.2"
+	}
+}

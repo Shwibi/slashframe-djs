@@ -1,0 +1,9 @@
+{
+	"client_id": "788339815434944512",
+	"Dev": {
+		"test_server_id": "712171841891860530",
+		"dev_ids": ["700328450270953503"]
+	},
+	"support_server": "https://discord.gg/H3tJBHd",
+	"invite_link": "https://discord.com/api/oauth2/authorize?client_id=788339815434944512&permissions=8&redirect_uri=https%3A%2F%2Fwww.discord.com%2Fapp&response_type=code&scope=bot%20applications.commands%20guilds"
+}
