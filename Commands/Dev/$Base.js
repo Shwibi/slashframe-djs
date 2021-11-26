@@ -10,6 +10,14 @@ class MyCommand extends Command {
 		this.aliases = [];
 		this.options = [];
 		this.color = "RANDOM";
+		this.customBuild = false;
+	}
+
+	get build() {
+		return new SlashCommandBuilder()
+			.setName(this.cmdName)
+			.setDescription(this.description)
+			.setDefaultPermission(true);
 	}
 
 	/**

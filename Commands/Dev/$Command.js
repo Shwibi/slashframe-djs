@@ -1,9 +1,17 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const { CommandInteraction, Client } = require("discord.js");
 const MC = require("../../Classes/Main");
 
 const CommandName = "CommandName";
 
 class Command extends MC {
+	static OptTemp = {
+		type: "user/channel/role/string/integer/number/bool",
+		name: "name",
+		description: "desc",
+		required: false,
+	};
+
 	constructor(
 		cmdName = CommandName,
 		description = "Description",
@@ -24,6 +32,14 @@ class Command extends MC {
 			},
 		];
 		this.color = "RANDOM";
+		this.customBuild = false;
+	}
+
+	get build() {
+		return new SlashCommandBuilder()
+			.setName(this.cmdName)
+			.setDescription(this.description)
+			.setDefaultPermission(true);
 	}
 
 	/**

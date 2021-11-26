@@ -108,10 +108,18 @@ const rest = new REST({ version: "9" }).setToken(token);
 
 async function load() {
 	try {
-		await rest.put(
-			Routes.applicationGuildCommands(client_id, Dev.test_server_id),
-			{ body: JSONArray }
-		);
+		if (process.argv[3] && process.argv[3] == "global") {
+			console.log("Adding to global bot.");
+			await rest.put(Routes.applicationCommands(client_id), {
+				body: JSONArray,
+			});
+		} else {
+			console.log(`Adding to dev server ${Dev.test_server_id}`);
+			await rest.put(
+				Routes.applicationGuildCommands(client_id, Dev.test_server_id),
+				{ body: JSONArray }
+			);
+		}
 
 		console.log("Successfully registered application commands.");
 	} catch (error) {
