@@ -2,7 +2,9 @@
   "client_id": "788339815434944512",
   "Dev": {
     "test_server_id": "712171841891860530",
-    "dev_ids": ["700328450270953503"]
+    "dev_ids": ["700328450270953503"],
+    "contributors": ["you"],
+    "redacted": []
   },
   "support_server": "https://discord.gg/H3tJBHd"
 }

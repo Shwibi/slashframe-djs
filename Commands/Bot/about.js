@@ -2,8 +2,6 @@ const { Client, CommandInteraction, MessageEmbed } = require("discord.js");
 const { Command } = require("../Dev/$Command");
 const { invite_link, support_server, Dev } = require("../../Core/config.json");
 
-const contributors = ["you"];
-
 class About extends Command {
   constructor() {
     super("about");
