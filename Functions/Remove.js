@@ -41,7 +41,7 @@ async function cmd(commandArray) {
             stat == "dev"
               ? Routes.applicationGuildCommand(
                   client_id,
-                  Dev.test_server_id,
+                  _argv[0] || Dev.test_server_id,
                   command.id
                 )
               : Routes.applicationCommand(client_id, command.id);
@@ -65,9 +65,11 @@ async function remove() {
     // );
     const route =
       process.argv[2] == "dev"
-        ? Routes.applicationGuildCommands(client_id, Dev.test_server_id)
+        ? process.argv[3]
+          ? Routes.applicationGuildCommands(client_id, process.argv[3])
+          : Routes.applicationGuildCommands(client_id, Dev.test_server_id)
         : Routes.applicationCommands(client_id);
-    console.log(process.argv[2]);
+
     await rest.get(route).then((result) => {
       cmd(result);
     });

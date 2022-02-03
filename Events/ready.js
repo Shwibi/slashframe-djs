@@ -1,6 +1,7 @@
 const Evt = require("./$Event");
 const { Client, MessageEmbed } = require("discord.js");
 const { Err } = require("shwi-js");
+const Out = require("../CustomHandlers/Out");
 
 class Ready extends Evt {
   static FieldsTemp = [
@@ -141,7 +142,7 @@ class Ready extends Evt {
     this.log(content, details);
   }
 
-  log(
+  async log(
     content,
     details = {
       non_embed: "Log",
@@ -167,8 +168,9 @@ class Ready extends Evt {
       .setDescription(desc)
       .setTimestamp();
 
+    let fields_t = [];
+
     if ((fields && fields[0]?.name !== "Field name") || fields?.length > 1) {
-      let fields_t = [];
       fields.forEach((fld) => {
         this.redacted.strings.forEach((str) => {
           fld.name = fld.name.replace(new RegExp(`${str}`, "gi"), "[redc]");
@@ -182,6 +184,9 @@ class Ready extends Evt {
       embeds: [sendEmbed],
       content: non_embed,
     });
+
+    // Also sent to outbox loggings
+    await Out.info(Out.jsonify(content), Out.jsonify(fields_t), non_embed);
   }
 }
 const ready = new Ready();

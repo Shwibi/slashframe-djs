@@ -109,16 +109,16 @@ const rest = new REST({ version: "9" }).setToken(token);
 async function load() {
   try {
     const _argv = process.argv.slice(2).map((a) => a.trim().toLowerCase());
-    if (_argv[0] == "global") {
-      await rest.put(Routes.applicationCommands(client_id), {
-        body: JSONArray,
-      });
-    } else {
-      await rest.put(
-        Routes.applicationGuildCommands(client_id, Dev.test_server_id),
-        { body: JSONArray }
-      );
-    }
+    const def = Routes.applicationGuildCommands(client_id, Dev.test_server_id);
+    const route =
+      _argv[0] == "global"
+        ? Routes.applicationCommands(client_id)
+        : _argv[0] == "dev"
+        ? _argv[1]
+          ? Routes.applicationGuildCommands(client_id, _argv[1])
+          : def
+        : def;
+    await rest.put(route, { body: JSONArray });
 
     console.log("Successfully registered application commands.");
   } catch (error) {
